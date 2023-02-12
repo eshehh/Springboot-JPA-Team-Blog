@@ -52,8 +52,13 @@ public class BoardApiController {
 	// dto 사용하지 않은 이유는!!
 	@PostMapping("/api/board/{boardId}/reply")
 	public  ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto replySaveRequestDto) { 
-	
 		boardService.댓글쓰기(replySaveRequestDto);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
+	@DeleteMapping("/api/board/{boardId}/reply/{replyId}")
+	public  ResponseDto<Integer> replyDelete(@PathVariable int replyId) { 
+		boardService.댓글삭제(replyId);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	

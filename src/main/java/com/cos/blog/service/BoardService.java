@@ -21,18 +21,20 @@ import com.cos.blog.repository.BoardRepository;
 import com.cos.blog.repository.ReplyRepository;
 import com.cos.blog.repository.UserRepository;
 
+import lombok.RequiredArgsConstructor;
+
 
 @Service
+@RequiredArgsConstructor
 public class BoardService {
 	
-	@Autowired
-	private BoardRepository boardRepository;
+	private final BoardRepository boardRepository;
+	private final ReplyRepository replyRepository;
 	
-	@Autowired
-	private ReplyRepository replyRepository;
-	
-	@Autowired
-	private UserRepository userRepository;
+//		public BoardService(BoardRepository bRepo, ReplyRepository rRepo) {
+//			this.boardRepository = bRepo;
+//			this.replyRepository = rRepo;
+//	}
 	
 	@Transactional
 	public void 글쓰기(Board board, User user) { //title, content만 받는다
@@ -74,6 +76,11 @@ public class BoardService {
 	@Transactional
 	public void 댓글쓰기(ReplySaveRequestDto replySaveRequestDto) {
 	int result = replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
+	}
+	
+	@Transactional
+	public void 댓글삭제(int replyId) {
+		replyRepository.deleteById(replyId);
 	}
 	
 }

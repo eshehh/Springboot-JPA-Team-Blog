@@ -100,6 +100,18 @@ let index = {
 		}); 
 	},
 	
+	replyDelete: function(boardId, replyId){
+		$.ajax({
+			type: "DELETE",
+			url: `/api/board/${boardId}/reply/${replyId}`,
+			dataType: "json" 
+		}).done(function(resp){
+			alert("댓글삭제 성공");
+			location.href = `/board/${boardId}`;
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		}); 
+	},
 	
 	}
 
