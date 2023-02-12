@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cos.blog.model.Board;
 import com.cos.blog.model.Reply;
 import com.cos.blog.repository.BoardRepository;
-import com.cos.blog.repository.RelplyRepository;
+import com.cos.blog.repository.ReplyRepository;
 
 
 @RestController
@@ -20,7 +20,7 @@ public class ReplyControllerTest {
 	private BoardRepository boardRepository;
 	
 	@Autowired
-	private RelplyRepository replyRepository;
+	private ReplyRepository replyRepository;
 	
 	@GetMapping("/test/board/{id}")
 	public Board getBoard(@PathVariable int id) {
