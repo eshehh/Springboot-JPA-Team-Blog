@@ -38,7 +38,6 @@ public class BoardService {
 	
 	@Transactional
 	public void 글쓰기(Board board, User user) { //title, content만 받는다
-		board.setCount(0);
 		board.setUser(user);
 		boardRepository.save(board);
 	}
@@ -48,12 +47,14 @@ public class BoardService {
 		return boardRepository.findAll(pageable);
 	}
 	
-	@Transactional(readOnly = true)
+	@Transactional
 	public Board 글상세보기(int id) {
-		return boardRepository.findById(id)
+		Board board = boardRepository.findById(id)
 				.orElseThrow(()->{
-					return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다");
+					return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다");					
 		});
+		board.setCount(board.getCount()+1);
+		return board;
 	}
 	
 	@Transactional

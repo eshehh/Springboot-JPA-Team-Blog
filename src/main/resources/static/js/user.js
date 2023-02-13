@@ -1,6 +1,28 @@
 let index = {
 	init: function(){
 		$("#btn-save").on("click",()=>{ // function(){}, ()=>{}를 사용한 이유는 this를 바인딩하기 위해서!!
+			if($("#username").val()==""){
+			alert("아이디를 입력하세요");
+			$("#username").focus();
+			return false;
+		}
+		if($("#password").val() == "") {
+			alert("비밀번호를 입력하세요");
+			$("#password").focus();
+            return false;
+		}
+		if($("#pass_check").val() == "") {
+			alert("비밀번호를 입력하세요");
+			$("#pass_check").focus();
+            return false;
+		}
+		
+		if($("#email").val() == "") {
+			alert("이메일을 입력하세요");
+			$("#email").focus();
+            return false;
+		}
+	
 			this.save();
 		});
 		$("#btn-update").on("click",()=>{ // function(){}, ()=>{}를 사용한 이유는 this를 바인딩하기 위해서!!

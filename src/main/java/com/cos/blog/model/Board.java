@@ -15,9 +15,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.persistence.PrePersist;
 
-
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -46,7 +45,7 @@ public class Board {
 	 @Lob // 대용량 데이터
 	 private String content; // 섬머노트 라이브러리 <html>태그가 섞여서 디자인이 됨.
 	 	 
-	  private int count; // 조회수
+	  private Long count; // 조회수
 	 
 	  @ManyToOne(fetch = FetchType.EAGER) // Many = Board, User=One
 	  @JoinColumn(name="userId")
@@ -60,4 +59,8 @@ public class Board {
 	  @CreationTimestamp
 	  private Timestamp createDate;
 	 
+		@PrePersist // DB에 해당 테이블의 insert 연산을 실행 할 때 같이 실행해라
+		public void prePersist() {
+			this.count= this.count==null? 0 : this.count;
+		}
 }

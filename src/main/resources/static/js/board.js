@@ -10,7 +10,13 @@ let index = {
 			this.update();
 		});
 		$("#btn-reply-save").on("click",()=>{ // function(){}, ()=>{}를 사용한 이유는 this를 바인딩하기 위해서!!
-			this.replySave();
+			if($("#reply-content").val()==""){
+			alert("내용을 입력해주세요");
+			$("#reply-content").focus();
+			return false;
+			}else{this.replySave();}
+			
+			
 		});
 		
 	},

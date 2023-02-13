@@ -28,6 +28,7 @@ public class BoardController {
 	@GetMapping("/board/{id}")
 	public String findById(@PathVariable int id, Model model) {
 		model.addAttribute("board",boardService.글상세보기(id));
+		
 		return "board/detail";
 	}
 	
@@ -37,7 +38,7 @@ public class BoardController {
 		return "board/updateForm";
 	}
 	
-	// User  권한이 필요
+	
 	@GetMapping({"/board/saveForm"})
 	public String saveForm() { 
 		return "board/saveForm";

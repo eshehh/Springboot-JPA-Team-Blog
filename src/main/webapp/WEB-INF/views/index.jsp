@@ -9,6 +9,7 @@
 <div class="card m-2" >
   <div class="card-body">
     <h4 class="card-title">${board.title}</h4>
+     <h5 class="card-title">조회수 : ${board.count}</h5>
     <a href="/board/ ${board.id}" class="btn btn-primary">상세보기</a>
   </div>
 </div> 
