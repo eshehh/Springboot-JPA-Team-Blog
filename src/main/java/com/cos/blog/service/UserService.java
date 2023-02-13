@@ -46,6 +46,15 @@ public class UserService {
 	}
 	
 	@Transactional
+	public void 관리자회원가입(User user) {
+		String rawPassword =  user.getPassword(); // 1234 원문
+		String encPassword =  encoder.encode(rawPassword); // 해쉬
+		user.setPassword(encPassword);
+		user.setRole(RoleType.ADMIN);
+		userRepository.save(user);
+	}
+	
+	@Transactional
 	public void 회원수정(User user) {
 		// 수정시에는 영속성 컨텍스트 User 오브젝트를 영속화시키고 영속화된 User 오브젝트를 수정
 		// select를 해서 User오브젝트를 DB로 부터 가져오는 이유는 영속화를 하기 위해서!!

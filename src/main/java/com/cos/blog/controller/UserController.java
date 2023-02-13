@@ -53,6 +53,11 @@ public class UserController {
 		return "user/joinForm";
 	}
 	
+	@GetMapping("/admin/joinForm")
+	public String adminJoinForm() {
+		return "admin/joinForm";
+	}
+	
 	@GetMapping("/auth/loginForm")
 	public String loginForm() {
 		return "user/loginForm";
