@@ -16,7 +16,7 @@
 </div> 
 </c:forEach>
  
-<ul class="pagination justify-content-center">
+<ul class="pagination justify-content-center page-style"  >
   <c:choose>
   	<c:when test="${boards.first}">
   		<li class="page-item disabled"><a class="page-link" href="?page=${boards.number-1}">이전</a></li>

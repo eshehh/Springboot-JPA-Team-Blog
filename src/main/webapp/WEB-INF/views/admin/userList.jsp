@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file= "../layout/header.jsp" %>
 
-<div class="container">
+<div class="container form-style">
 <table class="table table-hover">
 		<thead>
 			<tr>

@@ -3,7 +3,7 @@
 
 <%@ include file= "../layout/header.jsp" %>
 
-<div class="container">
+<div class="container loginform-style">
 <form action= "/auth/loginProc" method="post">
   <div class="form-group">
     <label for="username">Username</label>

@@ -1,0 +1,43 @@
+.form-style{
+margin-top:140px;
+}
+
+.saveform-style{
+	margin-top:100px;
+}
+
+.loginform-style{
+	margin-top:200px;
+}
+
+.detail-style{
+	margin-top:100px;
+	margin-bottom:200px;
+}
+
+footer{
+    border-top: 1px solid #666666;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    position: absolute;
+    bottom:0;
+}
+.footer-07{
+padding-top: 20px;
+    width: 100%;
+    justify-content: space-between;
+
+}
+.footer-07 a{
+	text-decoration-line: none;
+	color: #007bff;
+}
+
+.footer-07 h5{
+	color: black;
+}
+
+.copyright{
+	color: black;
+}

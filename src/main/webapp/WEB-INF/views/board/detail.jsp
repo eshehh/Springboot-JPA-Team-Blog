@@ -3,7 +3,7 @@
 
 <%@ include file= "../layout/header.jsp" %>
 
-<div class="container">
+<div class="container detail-style">
 
   <button class = "btn btn-secondary" onclick="history.back()">돌아가기</button>
   <c:set var = "admin" value="ADMIN"/>
@@ -60,4 +60,4 @@
 	
 </div>
     <script src="/js/board.js"></script>
-<%@ include file= "../layout/footer.jsp" %>
+
