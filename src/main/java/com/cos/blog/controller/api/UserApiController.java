@@ -39,13 +39,7 @@ public class UserApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
-	@PostMapping("/admin/joinProc")
-	public  ResponseDto<Integer> adminsave(@RequestBody User user) { // username, password, email
-		System.out.println("UserApiController : save 호출됨");
-		// 실제로 DB에 insert를 하고 아래에서 return이 되면 됩니다.
-		userService.관리자회원가입(user);
-		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-	}
+	
 	
 	@PutMapping("/user")
 	public ResponseDto<Integer> update(@RequestBody User user){
