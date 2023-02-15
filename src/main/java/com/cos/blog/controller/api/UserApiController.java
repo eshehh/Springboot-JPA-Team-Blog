@@ -27,30 +27,29 @@ public class UserApiController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
+
 	@PostMapping("/auth/joinProc")
-	public  ResponseDto<Integer> save(@RequestBody User user) { // username, password, email
+	public ResponseDto<Integer> save(@RequestBody User user) { // username, password, email
 		System.out.println("UserApiController : save 호출됨");
 		// 실제로 DB에 insert를 하고 아래에서 return이 되면 됩니다.
 		userService.회원가입(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
-	
-	
-	
+
 	@PutMapping("/user")
-	public ResponseDto<Integer> update(@RequestBody User user){
+	public ResponseDto<Integer> update(@RequestBody User user) {
 		userService.회원수정(user);
 		// 여기서는 트랜잭션이 종료되기 때문에 DB에 값은 변경이 됐음.
 		// 하지만 세션값은 변경되지 않는 상태이기 때문에 직접 세션값을 변경해줘야한다.
-		//세션 등록
-		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+		// 세션 등록
+		Authentication authentication = authenticationManager
+				.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
-		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
-	
+
 }

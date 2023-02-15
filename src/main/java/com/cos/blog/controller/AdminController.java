@@ -21,26 +21,26 @@ import com.cos.blog.service.UserService;
 
 @Controller
 public class AdminController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private AdminService adminService;
-	
+
 	@PostMapping("/admin/joinProc")
-	public  @ResponseBody ResponseDto<Integer> adminsave(@RequestBody User user) { // username, password, email
+	public @ResponseBody ResponseDto<Integer> adminsave(@RequestBody User user) { // username, password, email
 		System.out.println("UserApiController : save 호출됨");
 		// 실제로 DB에 insert를 하고 아래에서 return이 되면 됩니다.
 		userService.관리자회원가입(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
-	
-	@GetMapping("/admin/userList") 
-	public  String userList(Model model, @PageableDefault(size=8, sort="id", direction = Sort.Direction.DESC)Pageable pageable) {
+
+	@GetMapping("/admin/userList")
+	public String userList(Model model,
+			@PageableDefault(size = 8, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 		model.addAttribute("userList", adminService.회원목록(pageable));
 		return "admin/userList";
 	}
-	
 
 }

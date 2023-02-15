@@ -20,7 +20,8 @@ public class BoardController {
 	 private BoardService boardService;
 	
 	@GetMapping({"","/"})
-	public String index(Model model, @PageableDefault(size=3, sort="id", direction = Sort.Direction.DESC)Pageable pageable) {// 스프링에서는 데이터를 가져갈때 Model을 사용해서
+	public String index(Model model,
+			@PageableDefault(size=3, sort="id", direction = Sort.Direction.DESC)Pageable pageable) {// 스프링에서는 데이터를 가져갈때 Model을 사용해서
 		model.addAttribute("boards", boardService.글목록(pageable));
 		return "index"; //@Controller 로 묶여있기 때문에 viewResolver 작동!!
 	}

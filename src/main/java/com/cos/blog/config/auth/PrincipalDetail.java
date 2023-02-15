@@ -20,18 +20,18 @@ public class PrincipalDetail implements UserDetails {
 	public PrincipalDetail(User user) {
 		this.user = user;
 	}
-	
+
 	@Override
 	public String getPassword() {
 		return user.getPassword();
 	}
 
 	@Override
-	public String getUsername() {	
+	public String getUsername() {
 		return user.getUsername();
 	}
 
-	//  계정이 만료되지 않았는지 리턴한다. (true: 만료안됨)
+	// 계정이 만료되지 않았는지 리턴한다. (true: 만료안됨)
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
@@ -54,14 +54,16 @@ public class PrincipalDetail implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
+
 		Collection<GrantedAuthority> collectors = new ArrayList<>();
-		collectors.add(()->{return "ROLE_"+user.getRole();});
-		
+		collectors.add(() -> {
+			return "ROLE_" + user.getRole();
+		});
+
 		return collectors;
 	}
-	
+
 }

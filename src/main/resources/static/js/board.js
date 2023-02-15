@@ -28,8 +28,7 @@ let index = {
 			content: $("#content").val(),
 			
 		};
-		
-		 
+			 
 		$.ajax({
 			type: "POST",
 			url: "/api/board",
